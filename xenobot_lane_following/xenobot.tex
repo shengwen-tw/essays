@@ -8,6 +8,7 @@
 \usepackage{hyperref}
 \usepackage{tikz}
 \usepackage{placeins}
+\usepackage{listings}
 \usetikzlibrary{shapes.geometric, arrows}
 
 \title{Xenobot technical report \\  Lane following}
@@ -23,6 +24,7 @@
 
 \section{Introduction}
 Xenobot is a computer vision based self-driving system inspired by MIT duckietown project. We re-implement our own system for real-time robotics research and may add more new features in the future.
+\\
 \\
 The algorithm we're using is a modified version of MIT duckietown, so you can find many similarities between two projects. This report is focus on how our lane following algorithm works.
 \\
@@ -41,15 +43,15 @@ The algorithm we're using is a modified version of MIT duckietown, so you can fi
 
 \section{Camera calibrations}
 
-Camera calibration is a big issue for computer vision. The camera parameter tells us the mapping between the image and the real world.
+Camera calibration is a early stage mission before doing the computer vision, they're two set of parameters need to be found, intrinsic parameters and extrinsic parameter, by estimate them we can know the relation between 2D image plane and 3D world. 
 
 \subsection{Intrinsic parameters}
 
-Intrinsic parameter describe the mapping between 2D image frame and 3D camera frame, usually also dealing with the distortion or skew of the camera.
+The intrinsic matrix describes the projection from 3D world into 2D image plane. The ideal linear model is consist of focal length, pixel size and principal point. The nonlinear effect like lens distortion are also important however can not described in the linear camera model and usually solved by numerical methods.
 
 \subsection{Extrinsic parameters}
 
-Extrinsic parameters describe the rotation and translation of the camera with respect to the world frame.
+The extrinsic matrix describes the translation and rotation of camera with respect to the world frame, which mean the angle and position of camera taking pictures in 3D world.
 
 \clearpage
 
@@ -115,7 +117,7 @@ The first step for lane pose estimation is to extract the segments from the imag
 
 \subsection{Frame transformation}
 
-The segments we got in the lane detector stage is in the camera frame, however, what we are really interested is the car frame, so we need to do a transformation between these two frame.
+The camera on the car is mounted in a distance from the origin. In order to know the real lateral displacement of the car, a transformation is need for converting camera frame into car frame.
 
 \[
 \begin{pmatrix} x_{car} \\ y_{car} \end{pmatrix} = 
@@ -131,7 +133,11 @@ The segments we got in the lane detector stage is in the camera frame, however, 
 \FloatBarrier
 
 \subsection{Segment side recognition}
-We obtained the lane segments during the lane detection process. Next step is to figure out the segment side on the lane mark. It could be determined by reading multiple pixel values in the direction of segment normal vector on color thresholding image.
+
+Canny edge detection and Hough transform find the lane segments for us. However, we still don't know the segments is on which side of the lane mark.
+\\
+\\
+To determine the side, we can read multiple pixels in both positive and negative direction of the segment normal vector on color thresholded image. 
 
 \begin{figure}[ht]
   \label{fig:lane_segment}
@@ -163,7 +169,7 @@ We obtained the lane segments during the lane detection process. Next step is to
 		\\		
 		\uIf{$I(x,y) = I_{max}$}
 			{
-				$left \gets left + 1$ 
+				$left \mathrel{+}= 1$ 
 			}
 			
 		$x \gets \lfloor x_p - x_n \cdot i \rfloor$
@@ -172,7 +178,7 @@ We obtained the lane segments during the lane detection process. Next step is to
 		\\		
 		\uIf{$I(x,y) = I_{max}$}
 			{
-				$right \gets right + 1$ 
+				$right \mathrel{+}= 1$ 
 			}
 	}
 	
@@ -324,21 +330,28 @@ We obtained the lane segments during the lane detection process. Next step is to
 \subsection{Differential wheels}
 
 \subsection{PID Controller}
-The equation of PID controller in continuous time is given as:\\
+
+Xenobot use the well known algorithm \textbf{"PID controller"} to fix the orientation and lateral displacement.
+\\
+\\
+The equation of PID controller in continuous time is given as:
 
 \[e(t) = setpoint(t) - x(t)\]
 
 \[u(t) = K_p e(t) + K_i \int_{0}^{t} e(\tau) d\tau + K_d  \frac{de(t)}{dt}\]
 
-in discreted time:
+\noindent and for discreted time:
 
 \[e[t] = setpoint[t] - x[t]\]
 
-\[u(t) = K_p e[t] + K_i \sum_0^t e[t] \Delta t + K_d \frac{e[t] - e[t-1]}{\Delta t}\]
+\[u[t] = K_p e[t] + K_i \sum_0^t e[t] \Delta t + K_d \frac{e[t] - e[t-1]}{\Delta t}\]
 
-\subsection{d control and phi control}
+\subsection{Pose control}
 
-The lane pose controller of Xenobot is a cascaded PID controller, the phi controller is treat as a low level contoller for lane orientation stablizing, the higher level d controller will change the setpoint of the phi controller to turn left or right back to the middle of road when it is needed.
+The pose controller of Xenobot is a cascaded PID controller.
+\\
+\\
+The phi controller is a low level contoller for lane orientation stablizing, and d controller fix the lateral displacement by changing the setpoint of phi controller to turn left or right.
 
 \begin{figure}[ht]
   \label{fig:control_diagram}
@@ -347,6 +360,13 @@ The lane pose controller of Xenobot is a cascaded PID controller, the phi contro
   \caption{Control diagram}
 \end{figure}
 \FloatBarrier
+
+\noindent The wheel control signal (PWM) is simply the throttle value plus the correction value:
+
+\begin{lstlisting}
+pwm_left = THROTTLE__BASE - pwm_correction
+pwm_right = THROTTLE__BASE + pwm_correction
+\end{lstlisting}
 
 \clearpage
 

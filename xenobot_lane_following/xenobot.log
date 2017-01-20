@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.14)  20 JAN 2017 23:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.14)  21 JAN 2017 00:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -911,6 +911,31 @@ File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 (/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 )
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count137
+\lst@gtempboxa=\box47
+\lst@token=\toks34
+\lst@length=\count138
+\lst@currlwidth=\dimen179
+\lst@column=\count139
+\lst@pos=\count140
+\lst@lostspace=\dimen180
+\lst@width=\dimen181
+\lst@newlines=\count141
+\lst@lineno=\count142
+\lst@maxwidth=\dimen182
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count143
+\lst@skipnumbers=\count144
+\lst@framebox=\box48
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryshapes.geometric.code.tex
 File: tikzlibraryshapes.geometric.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1
@@ -928,26 +953,26 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.
 tex
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
-\arrowsize=\dimen179
+\arrowsize=\dimen183
 )) (./xenobot.aux)
 \openout1 = `xenobot.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-\AtBeginShipoutBox=\box47
-Package hyperref Info: Link coloring OFF on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+\AtBeginShipoutBox=\box49
+Package hyperref Info: Link coloring OFF on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -955,11 +980,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count137
+\c@section@level=\count145
 )
-LaTeX Info: Redefining \ref on input line 17.
-LaTeX Info: Redefining \pageref on input line 17.
-LaTeX Info: Redefining \nameref on input line 17.
+LaTeX Info: Redefining \ref on input line 18.
+LaTeX Info: Redefining \pageref on input line 18.
+LaTeX Info: Redefining \nameref on input line 18.
 
 (./xenobot.out) (./xenobot.out)
 \@outlinefile=\write4
@@ -968,17 +993,17 @@ LaTeX Info: Redefining \nameref on input line 17.
  ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count138
-\scratchdimen=\dimen180
-\scratchbox=\box48
-\nofMPsegments=\count139
-\nofMParguments=\count140
-\everyMPshowfont=\toks34
-\MPscratchCnt=\count141
-\MPscratchDim=\dimen181
-\MPnumerator=\count142
-\makeMPintoPDFobject=\count143
-\everyMPtoPDFconversion=\toks35
+\scratchcounter=\count146
+\scratchdimen=\dimen184
+\scratchbox=\box50
+\nofMPsegments=\count147
+\nofMParguments=\count148
+\everyMPshowfont=\toks35
+\MPscratchCnt=\count149
+\MPscratchDim=\dimen185
+\MPnumerator=\count150
+\makeMPintoPDFobject=\count151
+\everyMPtoPDFconversion=\toks36
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -994,29 +1019,36 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Underfull \hbox (badness 10000) in paragraph at lines 25--32
+\c@lstlisting=\count152
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--34
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--32
+Underfull \hbox (badness 10000) in paragraph at lines 26--34
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--32
+Underfull \hbox (badness 10000) in paragraph at lines 26--34
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--32
+Underfull \hbox (badness 10000) in paragraph at lines 26--34
 
  []
 
-<graphs/xenobot.PNG, id=67, 803.0pt x 668.4975pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--34
+
+ []
+
+<graphs/xenobot.PNG, id=71, 803.0pt x 668.4975pt>
 File: graphs/xenobot.PNG Graphic file (type png)
  <use graphs/xenobot.PNG>
-Package pdftex.def Info: graphs/xenobot.PNG used on input line 36.
+Package pdftex.def Info: graphs/xenobot.PNG used on input line 38.
 (pdftex.def)             Requested size: 240.90186pt x 200.5508pt.
 
 [1
@@ -1024,113 +1056,112 @@ Package pdftex.def Info: graphs/xenobot.PNG used on input line 36.
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./graphs/xenobot.PNG>]
 [2
 
-] <graphs/coordinate_system.PNG, id=84, 602.85225pt x 190.91325pt>
+] <graphs/coordinate_system.PNG, id=88, 602.85225pt x 190.91325pt>
 File: graphs/coordinate_system.PNG Graphic file (type png)
 
 <use graphs/coordinate_system.PNG>
-Package pdftex.def Info: graphs/coordinate_system.PNG used on input line 62.
+Package pdftex.def Info: graphs/coordinate_system.PNG used on input line 64.
 (pdftex.def)             Requested size: 361.71414pt x 114.54883pt.
 
-Overfull \hbox (16.71414pt too wide) in paragraph at lines 62--63
+Overfull \hbox (16.71414pt too wide) in paragraph at lines 64--65
  [][] 
  []
 
-<graphs/lane_parameter_2d_view.PNG, id=85, 463.7325pt x 326.4195pt>
+<graphs/lane_parameter_2d_view.PNG, id=89, 463.7325pt x 326.4195pt>
 File: graphs/lane_parameter_2d_view.PNG Graphic file (type png)
 
 <use graphs/lane_parameter_2d_view.PNG>
 Package pdftex.def Info: graphs/lane_parameter_2d_view.PNG used on input line 7
-0.
+2.
 (pdftex.def)             Requested size: 278.24164pt x 195.8532pt.
 
-<graphs/lane_pose.PNG, id=86, 327.02174pt x 292.6935pt>
+<graphs/lane_pose.PNG, id=90, 327.02174pt x 292.6935pt>
 File: graphs/lane_pose.PNG Graphic file (type png)
 
 <use graphs/lane_pose.PNG>
-Package pdftex.def Info: graphs/lane_pose.PNG used on input line 78.
+Package pdftex.def Info: graphs/lane_pose.PNG used on input line 80.
 (pdftex.def)             Requested size: 228.91365pt x 204.88405pt.
  [3
 
  <./graphs/coordinate_system.PNG> <./graphs/lane_parameter_2d_view.PNG>] [4 <./
 graphs/lane_pose.PNG>]
-<graphs/frame_transformation.PNG, id=101, 241.50224pt x 268.00125pt>
+<graphs/frame_transformation.PNG, id=105, 241.50224pt x 268.00125pt>
 File: graphs/frame_transformation.PNG Graphic file (type png)
 
 <use graphs/frame_transformation.PNG>
-Package pdftex.def Info: graphs/frame_transformation.PNG used on input line 128
+Package pdftex.def Info: graphs/frame_transformation.PNG used on input line 130
 .
 (pdftex.def)             Requested size: 169.0504pt x 187.59958pt.
  [5]
-<graphs/segment.PNG, id=111, 336.0555pt x 415.5525pt>
+Underfull \hbox (badness 10000) in paragraph at lines 137--141
+
+ []
+
+<graphs/segment.PNG, id=115, 336.0555pt x 415.5525pt>
 File: graphs/segment.PNG Graphic file (type png)
  <use graphs/segment.PNG>
-Package pdftex.def Info: graphs/segment.PNG used on input line 139.
+Package pdftex.def Info: graphs/segment.PNG used on input line 145.
 (pdftex.def)             Requested size: 134.41982pt x 166.21805pt.
 
 [6 <./graphs/frame_transformation.PNG> <./graphs/segment.PNG>]
-<graphs/lane_geometry.PNG, id=120, 261.97874pt x 195.129pt>
+<graphs/lane_geometry.PNG, id=124, 261.97874pt x 195.129pt>
 File: graphs/lane_geometry.PNG Graphic file (type png)
 
 <use graphs/lane_geometry.PNG>
-Package pdftex.def Info: graphs/lane_geometry.PNG used on input line 201.
+Package pdftex.def Info: graphs/lane_geometry.PNG used on input line 207.
 (pdftex.def)             Requested size: 261.9781pt x 195.12851pt.
  [7] [8 <./graphs/lane_geometry.PNG>] [9]
-<graphs/histogram_filter.PNG, id=194, 267.399pt x 227.04825pt>
+<graphs/histogram_filter.PNG, id=198, 267.399pt x 227.04825pt>
 File: graphs/histogram_filter.PNG Graphic file (type png)
 
 <use graphs/histogram_filter.PNG>
-Package pdftex.def Info: graphs/histogram_filter.PNG used on input line 263.
+Package pdftex.def Info: graphs/histogram_filter.PNG used on input line 269.
 (pdftex.def)             Requested size: 240.65688pt x 204.34152pt.
  [10
 
  <./graphs/histogram_filter.PNG>] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 327--328
+Underfull \hbox (badness 10000) in paragraph at lines 334--338
 
  []
 
-<graphs/control_diagram.PNG, id=230, 684.75826pt x 239.09325pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 351--355
+
+ []
+
+<graphs/control_diagram.PNG, id=234, 684.75826pt x 239.09325pt>
 File: graphs/control_diagram.PNG Graphic file (type png)
 
 <use graphs/control_diagram.PNG>
-Package pdftex.def Info: graphs/control_diagram.PNG used on input line 346.
+Package pdftex.def Info: graphs/control_diagram.PNG used on input line 359.
 (pdftex.def)             Requested size: 410.85812pt x 143.45705pt.
 
-Overfull \hbox (65.85812pt too wide) in paragraph at lines 346--347
+Overfull \hbox (65.85812pt too wide) in paragraph at lines 359--360
  [][] 
  []
 
 [12
 
- <./graphs/control_diagram.PNG>] [13
+ <./graphs/control_diagram.PNG>] [13] [14
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 357.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 357.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 377.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 377.
  (./xenobot.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 357.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 357.
-
-
-Package rerunfilecheck Warning: File `xenobot.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `xenobot.out':
-(rerunfilecheck)             Before: 659E6A96D2323DDD704D93C0018F5715;959
-(rerunfilecheck)             After:  E7BF9C6C822A62CE9D68545D0BFB5ED7;1028.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 357.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 377.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 377.
+Package rerunfilecheck Info: File `xenobot.out' has not changed.
+(rerunfilecheck)             Checksum: 759A9ADE511970729D22D2061EB1D3E2;1015.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 377.
  ) 
 Here is how much of TeX's memory you used:
- 18722 strings out of 493029
- 352422 string characters out of 6136234
- 431208 words of memory out of 5000000
- 21824 multiletter control sequences out of 15000+600000
+ 20313 strings out of 493029
+ 373265 string characters out of 6136234
+ 451320 words of memory out of 5000000
+ 23399 multiletter control sequences out of 15000+600000
  14280 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,17n,56p,409b,757s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,17n,56p,409b,995s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texli
@@ -1147,10 +1178,10 @@ r17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb>
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on xenobot.pdf (13 pages, 1345446 bytes).
+Output written on xenobot.pdf (14 pages, 1347412 bytes).
 PDF statistics:
- 324 PDF objects out of 1000 (max. 8388607)
- 271 compressed objects within 3 object streams
- 113 named destinations out of 1000 (max. 500000)
- 178 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 335 PDF objects out of 1000 (max. 8388607)
+ 281 compressed objects within 3 object streams
+ 117 named destinations out of 1000 (max. 500000)
+ 186 words of extra memory for PDF output out of 10000 (max. 10000000)
 
