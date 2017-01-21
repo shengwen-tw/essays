@@ -116,7 +116,7 @@ We define x axis point to the right, y axis point foward and z axis point upward
 
 \subsection{Segements detection}
 
-Before the pose estimation, we first have to detect the lane segments from the image.The lane detector can be achieved by using Canny edge detection, color thresholding method and Hough transform.
+Before the pose estimation, first have to do is detect the lane segments from the image. The lane detector can be achieved by using Canny edge detection, color thresholding method and Hough transform.
 
 \begin{figure} [ht]
 \begin{center}
@@ -146,7 +146,7 @@ Before the pose estimation, we first have to detect the lane segments from the i
 \end{figure}
 \FloatBarrier
 
-\noindent We first transform the image from RGB color space into the HSV color space then use the color thresholding method to  find the color like yellow or white in the image.
+\noindent First, transform the image from RGB color space into the HSV color space then use the color thresholding method to find the color like yellow or white in the image.
 
 \begin{figure}[ht]
   \label{fig:threshold}
@@ -156,7 +156,7 @@ Before the pose estimation, we first have to detect the lane segments from the i
 \end{figure}
 \FloatBarrier
 
-\noindent Next, we use Canny edge detection to detect the edges in the image. This is a preparation for Hough transform later.
+\noindent Next, use Canny edge detection to detect the edges in the image. This is a preparation step for Hough transform.
 
 \begin{figure}[ht]
   \label{fig:canny}
@@ -166,7 +166,7 @@ Before the pose estimation, we first have to detect the lane segments from the i
 \end{figure}
 \FloatBarrier
 
-\noindent After all, using the bitwise and operation on color thresholding image and Canny edge image then apply the Hough transform comes out the segments. The following image visualizes the segment locations and also shows the values of $d$ and $\phi$.
+\noindent Finally, use the bitwise and operation on color thresholding image and Canny edge image then apply the Hough transform comes out the segments. The following image visualizes the segment locations and also shows the values of $d$ and $\phi$.
 
 \begin{figure}[ht]
   \label{fig:hough}
@@ -199,7 +199,7 @@ The camera on the car is mounted in a distance from the origin. In order to know
 Although the lane detector can find the segments, we still don't know the side of the lane mark that the segments is on.
 \\
 \\
-To determine the side, just reading multiple pixels in both positive and negative direction of the segment normal vector on color thresholded image. 
+Segment side can be determined by reading multiple pixels in both positive and negative direction of the segment normal vector on color thresholded image. 
 
 \begin{figure}[ht]
   \label{fig:lane_segment}
