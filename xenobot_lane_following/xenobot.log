@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.14)  21 JAN 2017 00:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.14)  22 JAN 2017 01:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -954,7 +954,11 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 tex
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
 \arrowsize=\dimen183
-)) (./xenobot.aux)
+)) (./xenobot.aux
+
+LaTeX Warning: Label `fig:ground projection' multiply defined.
+
+)
 \openout1 = `xenobot.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
@@ -973,8 +977,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 \AtBeginShipoutBox=\box49
 Package hyperref Info: Link coloring OFF on input line 18.
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -1045,7 +1048,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--34
 
  []
 
-<graphs/xenobot.PNG, id=71, 803.0pt x 668.4975pt>
+<graphs/xenobot.PNG, id=75, 803.0pt x 668.4975pt>
 File: graphs/xenobot.PNG Graphic file (type png)
  <use graphs/xenobot.PNG>
 Package pdftex.def Info: graphs/xenobot.PNG used on input line 38.
@@ -1054,111 +1057,182 @@ Package pdftex.def Info: graphs/xenobot.PNG used on input line 38.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./graphs/xenobot.PNG>]
-[2
+<graphs/distortion.png, id=88, 1141.866pt x 423.984pt>
+File: graphs/distortion.png Graphic file (type png)
 
-] <graphs/coordinate_system.PNG, id=88, 602.85225pt x 190.91325pt>
+<use graphs/distortion.png>
+Package pdftex.def Info: graphs/distortion.png used on input line 55.
+(pdftex.def)             Requested size: 342.56244pt x 127.19617pt.
+
+<graphs/intrinsic_calibration.png, id=89, 496.85625pt x 536.60475pt>
+File: graphs/intrinsic_calibration.png Graphic file (type png)
+
+<use graphs/intrinsic_calibration.png>
+Package pdftex.def Info: graphs/intrinsic_calibration.png used on input line 63
+.
+(pdftex.def)             Requested size: 248.4275pt x 268.30171pt.
+ [2
+
+ <./graphs/distortion.png>]
+<graphs/extrinsic_calibration.png, id=96, 430.60875pt x 313.17pt>
+File: graphs/extrinsic_calibration.png Graphic file (type png)
+
+<use graphs/extrinsic_calibration.png>
+Package pdftex.def Info: graphs/extrinsic_calibration.png used on input line 75
+.
+(pdftex.def)             Requested size: 301.42406pt x 219.21748pt.
+ [3 <./graphs/intrinsic_calibration.png>] [4 <./graphs/extrinsic_calibration.pn
+g>]
+<graphs/coordinate_system.PNG, id=107, 602.85225pt x 190.91325pt>
 File: graphs/coordinate_system.PNG Graphic file (type png)
 
 <use graphs/coordinate_system.PNG>
-Package pdftex.def Info: graphs/coordinate_system.PNG used on input line 64.
+Package pdftex.def Info: graphs/coordinate_system.PNG used on input line 91.
 (pdftex.def)             Requested size: 361.71414pt x 114.54883pt.
 
-Overfull \hbox (16.71414pt too wide) in paragraph at lines 64--65
+Overfull \hbox (16.71414pt too wide) in paragraph at lines 91--92
  [][] 
  []
 
-<graphs/lane_parameter_2d_view.PNG, id=89, 463.7325pt x 326.4195pt>
+<graphs/lane_parameter_2d_view.PNG, id=108, 463.7325pt x 326.4195pt>
 File: graphs/lane_parameter_2d_view.PNG Graphic file (type png)
 
 <use graphs/lane_parameter_2d_view.PNG>
-Package pdftex.def Info: graphs/lane_parameter_2d_view.PNG used on input line 7
-2.
+Package pdftex.def Info: graphs/lane_parameter_2d_view.PNG used on input line 1
+01.
 (pdftex.def)             Requested size: 278.24164pt x 195.8532pt.
 
-<graphs/lane_pose.PNG, id=90, 327.02174pt x 292.6935pt>
+<graphs/lane_pose.PNG, id=109, 327.02174pt x 292.6935pt>
 File: graphs/lane_pose.PNG Graphic file (type png)
 
 <use graphs/lane_pose.PNG>
-Package pdftex.def Info: graphs/lane_pose.PNG used on input line 80.
+Package pdftex.def Info: graphs/lane_pose.PNG used on input line 112.
 (pdftex.def)             Requested size: 228.91365pt x 204.88405pt.
- [3
+ [5
 
- <./graphs/coordinate_system.PNG> <./graphs/lane_parameter_2d_view.PNG>] [4 <./
+ <./graphs/coordinate_system.PNG> <./graphs/lane_parameter_2d_view.PNG>] [6 <./
 graphs/lane_pose.PNG>]
-<graphs/frame_transformation.PNG, id=105, 241.50224pt x 268.00125pt>
+<graphs/threshold.jpeg, id=125, 566.115pt x 213.79875pt>
+File: graphs/threshold.jpeg Graphic file (type jpg)
+
+<use graphs/threshold.jpeg>
+Package pdftex.def Info: graphs/threshold.jpeg used on input line 154.
+(pdftex.def)             Requested size: 283.05681pt x 106.89911pt.
+ [7]
+<graphs/canny.jpeg, id=132, 570.33075pt x 215.00325pt>
+File: graphs/canny.jpeg Graphic file (type jpg)
+ <use graphs/canny.jpeg>
+Package pdftex.def Info: graphs/canny.jpeg used on input line 164.
+(pdftex.def)             Requested size: 285.16467pt x 107.50136pt.
+
+<graphs/lane_mark.jpeg, id=133, 572.1375pt x 428.19975pt>
+File: graphs/lane_mark.jpeg Graphic file (type jpg)
+
+<use graphs/lane_mark.jpeg>
+Package pdftex.def Info: graphs/lane_mark.jpeg used on input line 174.
+(pdftex.def)             Requested size: 286.06804pt x 214.09935pt.
+ [8 <./graphs/threshold.jpeg> <./graphs/canny.jpeg>] <graphs/frame_transformati
+on.PNG, id=141, 241.50224pt x 268.00125pt>
 File: graphs/frame_transformation.PNG Graphic file (type png)
 
 <use graphs/frame_transformation.PNG>
-Package pdftex.def Info: graphs/frame_transformation.PNG used on input line 130
+Package pdftex.def Info: graphs/frame_transformation.PNG used on input line 192
 .
 (pdftex.def)             Requested size: 169.0504pt x 187.59958pt.
- [5]
-Underfull \hbox (badness 10000) in paragraph at lines 137--141
+ [9 <./graphs/lane_mark.jpeg>]
+Underfull \hbox (badness 10000) in paragraph at lines 199--203
 
  []
 
-<graphs/segment.PNG, id=115, 336.0555pt x 415.5525pt>
+<graphs/segment.PNG, id=150, 336.0555pt x 415.5525pt>
 File: graphs/segment.PNG Graphic file (type png)
  <use graphs/segment.PNG>
-Package pdftex.def Info: graphs/segment.PNG used on input line 145.
+Package pdftex.def Info: graphs/segment.PNG used on input line 207.
 (pdftex.def)             Requested size: 134.41982pt x 166.21805pt.
 
-[6 <./graphs/frame_transformation.PNG> <./graphs/segment.PNG>]
-<graphs/lane_geometry.PNG, id=124, 261.97874pt x 195.129pt>
+[10 <./graphs/frame_transformation.PNG> <./graphs/segment.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 268--272
+
+ []
+
+<graphs/ground_project.png, id=159, 460.72125pt x 277.63725pt>
+File: graphs/ground_project.png Graphic file (type png)
+
+<use graphs/ground_project.png>
+Package pdftex.def Info: graphs/ground_project.png used on input line 276.
+(pdftex.def)             Requested size: 322.50267pt x 194.34474pt.
+ [11]
+<graphs/lane_geometry.PNG, id=195, 261.97874pt x 195.129pt>
 File: graphs/lane_geometry.PNG Graphic file (type png)
 
 <use graphs/lane_geometry.PNG>
-Package pdftex.def Info: graphs/lane_geometry.PNG used on input line 207.
+Package pdftex.def Info: graphs/lane_geometry.PNG used on input line 288.
 (pdftex.def)             Requested size: 261.9781pt x 195.12851pt.
- [7] [8 <./graphs/lane_geometry.PNG>] [9]
-<graphs/histogram_filter.PNG, id=198, 267.399pt x 227.04825pt>
+ [12 <./graphs/ground_project.png>] [13 <./graphs/lane_geometry.PNG>] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 346--350
+
+ []
+
+<graphs/histogram_filter.PNG, id=240, 267.399pt x 227.04825pt>
 File: graphs/histogram_filter.PNG Graphic file (type png)
 
 <use graphs/histogram_filter.PNG>
-Package pdftex.def Info: graphs/histogram_filter.PNG used on input line 269.
+Package pdftex.def Info: graphs/histogram_filter.PNG used on input line 354.
 (pdftex.def)             Requested size: 240.65688pt x 204.34152pt.
- [10
+ [15
 
- <./graphs/histogram_filter.PNG>] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 334--338
+ <./graphs/histogram_filter.PNG>] [16]
+<graphs/differential_wheels.PNG, id=274, 320.99925pt x 318.59026pt>
+File: graphs/differential_wheels.PNG Graphic file (type png)
+
+<use graphs/differential_wheels.PNG>
+Package pdftex.def Info: graphs/differential_wheels.PNG used on input line 421.
+
+(pdftex.def)             Requested size: 224.69794pt x 223.01166pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 428--432
 
  []
 
+[17
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--355
+ <./graphs/differential_wheels.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 445--449
 
  []
 
-<graphs/control_diagram.PNG, id=234, 684.75826pt x 239.09325pt>
+<graphs/control_diagram.PNG, id=281, 684.75826pt x 239.09325pt>
 File: graphs/control_diagram.PNG Graphic file (type png)
 
 <use graphs/control_diagram.PNG>
-Package pdftex.def Info: graphs/control_diagram.PNG used on input line 359.
+Package pdftex.def Info: graphs/control_diagram.PNG used on input line 453.
 (pdftex.def)             Requested size: 410.85812pt x 143.45705pt.
 
-Overfull \hbox (65.85812pt too wide) in paragraph at lines 359--360
+Overfull \hbox (65.85812pt too wide) in paragraph at lines 453--454
  [][] 
  []
 
-[12
-
- <./graphs/control_diagram.PNG>] [13] [14
+[18 <./graphs/control_diagram.PNG>] [19
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 377.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 377.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 471.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 471.
  (./xenobot.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 377.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 377.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 471.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 471.
 Package rerunfilecheck Info: File `xenobot.out' has not changed.
-(rerunfilecheck)             Checksum: 759A9ADE511970729D22D2061EB1D3E2;1015.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 377.
+(rerunfilecheck)             Checksum: 8049510E736B53CB3FCF95BD716C811E;1081.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 471.
  ) 
 Here is how much of TeX's memory you used:
- 20313 strings out of 493029
- 373265 string characters out of 6136234
- 451320 words of memory out of 5000000
- 23399 multiletter control sequences out of 15000+600000
+ 20376 strings out of 493029
+ 374624 string characters out of 6136234
+ 451658 words of memory out of 5000000
+ 23439 multiletter control sequences out of 15000+600000
  14280 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,17n,56p,409b,995s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1178,10 +1252,10 @@ r17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb>
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on xenobot.pdf (14 pages, 1347412 bytes).
+Output written on xenobot.pdf (19 pages, 3886228 bytes).
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
- 281 compressed objects within 3 object streams
- 117 named destinations out of 1000 (max. 500000)
- 186 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 381 PDF objects out of 1000 (max. 8388607)
+ 310 compressed objects within 4 object streams
+ 130 named destinations out of 1000 (max. 500000)
+ 234 words of extra memory for PDF output out of 10000 (max. 10000000)
 

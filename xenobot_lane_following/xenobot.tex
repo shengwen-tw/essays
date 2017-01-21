@@ -45,19 +45,46 @@ The algorithm we're using is a modified version of MIT duckietown, so you can fi
 
 Camera calibration is a early stage mission before doing the computer vision, they're two set of parameters need to be found, intrinsic parameters and extrinsic parameter, by estimate them we can know the relation between 2D image plane and 3D world. 
 
-\subsection{Intrinsic parameters}
+\subsection{Intrinsic calibration}
 
 The intrinsic matrix describes the projection from 3D world into 2D image plane. The ideal linear model is consist of focal length, pixel size and principal point. The nonlinear effect like lens distortion are also important however can not described in the linear camera model and usually solved by numerical methods.
 
-\subsection{Extrinsic parameters}
+\begin{figure}[ht]
+  \label{fig:distortion}
+  \centering
+  \includegraphics[scale=0.3]{graphs/distortion.png}
+  \caption{Camera undistortion}
+\end{figure}
+\FloatBarrier
 
-The extrinsic matrix describes the translation and rotation of camera with respect to the world frame, which mean the angle and position of camera taking pictures in 3D world.
+\begin{figure}[ht]
+  \label{fig:intrinsic_calibration}
+  \centering
+  \includegraphics[scale=0.5]{graphs/intrinsic_calibration.png}
+  \caption{Intrinsic calibration}
+\end{figure}
+\FloatBarrier
+
+\subsection{Extrinsic calibration}
+
+The extrinsic matrix describes the translation and rotation of camera with respect to the world frame, which means the angle and position of camera taking pictures in 3D world.
+
+\begin{figure}[ht]
+  \label{fig:extrinsic_calibration}
+  \centering
+  \includegraphics[scale=0.7]{graphs/extrinsic_calibration.png}
+  \caption{Extrinsic calibration}
+\end{figure}
+\FloatBarrier
 
 \clearpage
 
 \section{Lane pose estimation}
 
-\subsection{Lane pose and system conventions}
+\subsection{System conventions}
+
+We define x axis point to the right, y axis point foward and z axis point upward as Xenobot's coordinate system.
+
 \begin{figure}[ht]
   \label{fig:lane_coordination}
   \centering
@@ -66,6 +93,8 @@ The extrinsic matrix describes the translation and rotation of camera with respe
 \end{figure}
 \FloatBarrier
 
+\noindent Another assumption is that the self-driving car runs between yellow line and white line. The yellow line is at the left side and the white line is at the right side.
+
 \begin{figure}[ht]
   \label{fig:lane_2d_view}
   \centering
@@ -73,6 +102,9 @@ The extrinsic matrix describes the translation and rotation of camera with respe
   \caption{2D view of lane}
 \end{figure}
 \FloatBarrier
+
+\noindent Now define the pose with respect to the lane, $\bm{d}$ is the lateral displacement and $\bm{\phi}$ is the orientation angle.
+
 
 \begin{figure}[ht]
   \label{fig:lane_pose}
@@ -84,7 +116,7 @@ The extrinsic matrix describes the translation and rotation of camera with respe
 
 \subsection{Segements detection}
 
-The first step for lane pose estimation is to extract the segments from the image, the process to do this is to threshold the specific color we want, and apply canny edge detector and Hough transform so we can find out the location of those segments
+Before the pose estimation, we first have to detect the lane segments from the image.The lane detector can be achieved by using Canny edge detection, color thresholding method and Hough transform.
 
 \begin{figure} [ht]
 \begin{center}
@@ -110,7 +142,37 @@ The first step for lane pose estimation is to extract the segments from the imag
 \draw [arrow] (hough) -- (segments);
 \end{tikzpicture}
 \end{center}
-\caption{Work flow of lane detector}
+\caption{Workflow of lane detector}
+\end{figure}
+\FloatBarrier
+
+\noindent We first transform the image from RGB color space into the HSV color space then use the color thresholding method to  find the color like yellow or white in the image.
+
+\begin{figure}[ht]
+  \label{fig:threshold}
+  \centering
+  \includegraphics[scale=0.5]{graphs/threshold.jpeg}
+  \caption{Binary color image of color thresholding result}
+\end{figure}
+\FloatBarrier
+
+\noindent Next, we use Canny edge detection to detect the edges in the image. This is a preparation for Hough transform later.
+
+\begin{figure}[ht]
+  \label{fig:canny}
+  \centering
+  \includegraphics[scale=0.5]{graphs/canny.jpeg}
+  \caption{Result of Canny edge detection}
+\end{figure}
+\FloatBarrier
+
+\noindent After all, using the bitwise and operation on color thresholding image and Canny edge image then apply the Hough transform comes out the segments. The following image visualizes the segment locations and also shows the values of $d$ and $\phi$.
+
+\begin{figure}[ht]
+  \label{fig:hough}
+  \centering
+  \includegraphics[scale=0.5]{graphs/lane_mark.jpeg}
+  \caption{Segments visualization (The lane detector only works at the botom ROI(Region of Interest) part because there is much possible to be the lane)}
 \end{figure}
 \FloatBarrier
 
@@ -134,16 +196,16 @@ The camera on the car is mounted in a distance from the origin. In order to know
 
 \subsection{Segment side recognition}
 
-Canny edge detection and Hough transform find the lane segments for us. However, we still don't know the segments is on which side of the lane mark.
+Although the lane detector can find the segments, we still don't know the side of the lane mark that the segments is on.
 \\
 \\
-To determine the side, we can read multiple pixels in both positive and negative direction of the segment normal vector on color thresholded image. 
+To determine the side, just reading multiple pixels in both positive and negative direction of the segment normal vector on color thresholded image. 
 
 \begin{figure}[ht]
   \label{fig:lane_segment}
   \centering
   \includegraphics[scale=0.4]{graphs/segment.PNG}
-  \caption{Lane segments}
+  \caption{Segment side recognition}
 \end{figure}
 \FloatBarrier
 
@@ -152,30 +214,32 @@ To determine the side, we can read multiple pixels in both positive and negative
 	\KwData{segment, accumulator threshold, color binarization image}
 	\KwResult{side (left or right)}
 	$\vec{P_1} = (x_1, y_1)$
-	\\
+
 	$\vec{P_2} = (x_2, y_2)$
-	\\
+
 	$\vec{P} = (\vec{P_1} + \vec{P_2}) / 2$
-	\\
+
 	$\vec{t} = \frac{\vec{P_2} - \vec{P_1}}
 					{\norm{\vec{P_2} - \vec{P_1}}}$
-	\\
+
 	$\vec{n} = (-y_t, x_t)$
-	\\
+
+	$left \gets 0 \ , \ right \gets 0$
+
 	\For {$i < pixel \ count$} {
 		$x \gets \lceil x_p + x_n \cdot i \rceil$
-		\\
+
 		$y \gets \lceil y_p + y_n \cdot i \rceil$
-		\\		
+	
 		\uIf{$I(x,y) = I_{max}$}
 			{
 				$left \mathrel{+}= 1$ 
 			}
 			
 		$x \gets \lfloor x_p - x_n \cdot i \rfloor$
-		\\
+
 		$y \gets \lfloor y_p - y_n \cdot i \rfloor$
-		\\		
+		
 		\uIf{$I(x,y) = I_{max}$}
 			{
 				$right \mathrel{+}= 1$ 
@@ -184,11 +248,11 @@ To determine the side, we can read multiple pixels in both positive and negative
 	
 	\uIf {$left > threshold \ \& \  right < threshold$}
 		{
-			\Return is left
+			\Return is\_left
 		}
 	\uElseIf {$right > threshold \ \& \ left < threshold$}
 		{
-			\Return is right
+			\Return is\_right
 		}
 	\uElse
 		{
@@ -199,7 +263,24 @@ To determine the side, we can read multiple pixels in both positive and negative
 \end{figure}
 \FloatBarrier
 
-\subsection{Segment pose estimation}
+\subsection{Ground projection}
+
+During the calibration stage, we found the homography matrix that map the image from car's view to the road upper view. This is usally called a bird eye view or a inverse perspective mapping image.
+\\
+\\
+\noindent We'll apply this transformation before further steps.
+
+\begin{figure}[ht]
+  \label{fig:ground projection}
+  \centering
+  \includegraphics[scale=0.7]{graphs/ground_project.png}
+  \caption{Ground projection}
+\end{figure}
+\FloatBarrier
+
+\subsection{Pose estimation for single segment}
+
+Each of the segment that lane detector detects can be calculated to be a single pose data due to the lane geometry. We will put these datas into the histogram filter for data filitering later. The process is similar to vote so we call it a vote generating function.
 
 \begin{figure}[ht]
   \label{fig:lane_geometry}
@@ -257,11 +338,15 @@ To determine the side, we can read multiple pixels in both positive and negative
 	$d_{i} = (d_1 + d_2) / 2$
 	\caption{Generate vote}
 \end{algorithm}
-\caption{Vote generation}
 \end{figure}
 \FloatBarrier
 
 \subsection{Histogram filter}
+
+The segment poses generated in previous process will then be voted into the histogram filter. The histogram filter will find out the \textbf{mode} of these datas and eliminate the data out of the mode with certain range.
+\\
+\\
+\noindent After that, calculate the \textbf{mean} of the rest of the datas comes out a much accurate pose information. 
 
 \begin{figure}[ht]
   \label{fig:histogram_filter}
@@ -319,7 +404,6 @@ To determine the side, we can read multiple pixels in both positive and negative
 	$d_{mean} \gets \frac{d_{mean}}{N_{d}}$	
 	\caption{Histogram filter}
 \end{algorithm}
-\caption{Histogram filter}
 \end{figure}
 \FloatBarrier
 
@@ -328,6 +412,16 @@ To determine the side, we can read multiple pixels in both positive and negative
 \section{Control system}
 
 \subsection{Differential wheels}
+
+Xenobot is a differential wheeled robot. There are two independent motors on the car. The car can be turn by changing the speed rate between two motors, hence it does not require any additional steering mechanics.
+
+\begin{figure}[ht]
+  \label{fig:ground projection}
+  \centering
+  \includegraphics[scale=0.7]{graphs/differential_wheels.PNG}
+  \caption{Differential wheeled robot}
+\end{figure}
+\FloatBarrier
 
 \subsection{PID Controller}
 
