@@ -10,7 +10,7 @@
 \BOOKMARK [2][-]{subsection.3.5}{Ground projection}{section.3}% 10
 \BOOKMARK [2][-]{subsection.3.6}{Pose estimation for single segment}{section.3}% 11
 \BOOKMARK [2][-]{subsection.3.7}{Histogram filter}{section.3}% 12
-\BOOKMARK [1][-]{section.4}{Control system}{}% 13
+\BOOKMARK [1][-]{section.4}{Control system design}{}% 13
 \BOOKMARK [2][-]{subsection.4.1}{Differential wheels}{section.4}% 14
 \BOOKMARK [2][-]{subsection.4.2}{PID Controller}{section.4}% 15
 \BOOKMARK [2][-]{subsection.4.3}{Pose control}{section.4}% 16

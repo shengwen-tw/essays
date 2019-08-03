@@ -16,13 +16,14 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\providecommand \oddpage@label [2]{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}}
 \newlabel{fig:xenobot}{{1}{1}{Introduction}{section.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Xenobot}}{1}{figure.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Puyuma self-driving system}}{1}{figure.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Camera calibrations}{2}{section.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Intrinsic calibration}{2}{subsection.2.1}}
 \newlabel{fig:distortion}{{2.1}{2}{Intrinsic calibration}{subsection.2.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Camera undistortion}}{2}{figure.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Camera undistortion and rectification}}{2}{figure.2}}
 \newlabel{fig:intrinsic_calibration}{{2.1}{3}{Intrinsic calibration}{figure.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Intrinsic calibration}}{3}{figure.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Extrinsic calibration}{3}{subsection.2.2}}
@@ -37,32 +38,32 @@
 \newlabel{fig:lane_pose}{{3.1}{6}{System conventions}{figure.6}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Lane pose}}{6}{figure.7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Segements detection}{6}{subsection.3.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Workflow of lane detector}}{7}{figure.8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Lane detector workflow}}{7}{figure.8}}
 \newlabel{fig:threshold}{{3.2}{8}{Segements detection}{figure.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Binary color image of color thresholding result}}{8}{figure.9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Binary image of color thresholding result}}{8}{figure.9}}
 \newlabel{fig:canny}{{3.2}{8}{Segements detection}{figure.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Result of Canny edge detection}}{8}{figure.10}}
 \newlabel{fig:hough}{{3.2}{9}{Segements detection}{figure.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Segments visualization (The lane detector only works at the botom ROI(Region of Interest) part because there is much possible to be the lane)}}{9}{figure.11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces A visualization image of lane pose estimator result}}{9}{figure.11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Frame transformation}{9}{subsection.3.3}}
 \newlabel{fig:frame_transformation}{{3.3}{10}{Frame transformation}{subsection.3.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Frame transformation}}{10}{figure.12}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Segment side recognition}{10}{subsection.3.4}}
 \newlabel{fig:lane_segment}{{3.4}{10}{Segment side recognition}{subsection.3.4}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Segment side recognition}}{10}{figure.13}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Segment side recognition}}{11}{algocf.1}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Segment side recognizing algorithm}}{11}{algocf.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Ground projection}{11}{subsection.3.5}}
 \newlabel{fig:ground projection}{{3.5}{12}{Ground projection}{subsection.3.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Ground projection}}{12}{figure.14}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Pose estimation for single segment}{12}{subsection.3.6}}
 \newlabel{fig:lane_geometry}{{3.6}{13}{Pose estimation for single segment}{subsection.3.6}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Lane geometry}}{13}{figure.15}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Generate vote}}{14}{algocf.2}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Vote generating function}}{14}{algocf.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Histogram filter}{15}{subsection.3.7}}
 \newlabel{fig:histogram_filter}{{3.7}{15}{Histogram filter}{subsection.3.7}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Histogram filter}}{15}{figure.16}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces Histogram filter}}{16}{algocf.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Control system}{17}{section.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Control system design}{17}{section.4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Differential wheels}{17}{subsection.4.1}}
 \newlabel{fig:ground projection}{{4.1}{17}{Differential wheels}{subsection.4.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Differential wheeled robot}}{17}{figure.17}}

@@ -11,9 +11,9 @@
 \usepackage{listings}
 \usetikzlibrary{shapes.geometric, arrows}
 
-\title{Xenobot technical report \\  Lane following}
-\author{\textbf{Shengwen Cheng , Po-Sheng Chen}}
-\date{January 2017}
+\title{Report of Puyuma self-driving system\\  Lane following algorithm}
+\author{\textbf{Sheng-Wen Cheng , Po-Sheng Chen}}
+\date{August 2019}
 
 \begin{document}
 
@@ -23,10 +23,10 @@
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
 \section{Introduction}
-Xenobot is a computer vision based self-driving system inspired by MIT duckietown project. We re-implement our own system for real-time robotics research and may add more new features in the future.
+Puyuma is a computer vision based self-driving system inspired by MIT duckietown project. By using Xenomai Linux real-time extension, we had created a miniature self-driving system which is suitable for doing real-time robotics research.
 \\
 \\
-The algorithm we're using is a modified version of MIT duckietown, so you can find many similarities between two projects. This report is focus on how our lane following algorithm works.
+This report introduces the design of Puyuma self-driving system, including computer vision algorithm, data filtering and controller design.
 \\
 \\
 \\
@@ -36,24 +36,24 @@ The algorithm we're using is a modified version of MIT duckietown, so you can fi
   \label{fig:xenobot}
   \centering
   \includegraphics[scale=0.3]{graphs/xenobot.PNG}
-  \caption{Xenobot}
+  \caption{Puyuma self-driving system}
 \end{figure}
 
 \clearpage
 
 \section{Camera calibrations}
 
-Camera calibration is a early stage mission before doing the computer vision, they're two set of parameters need to be found, intrinsic parameters and extrinsic parameter, by estimate them we can know the relation between 2D image plane and 3D world. 
+Camera calubration is a early stage job before running computer vision algorithm. There are two set of parameters need to be found, intrinsic parameters and extrinsic parameters. They describe the relation between 2D image plane and 3D world. 
 
 \subsection{Intrinsic calibration}
 
-The intrinsic matrix describes the projection from 3D world into 2D image plane. The ideal linear model is consist of focal length, pixel size and principal point. The nonlinear effect like lens distortion are also important however can not described in the linear camera model and usually solved by numerical methods.
+Intrinsic matrix describes the 3D world to 2D image plane projection. The ideal linear camera model is consist of focal length, pixel size and principal point. Non-linear effects like lens distortion also exists but can not be modeled by linear equations, therefor it is usually solved by numerical methods.
 
 \begin{figure}[ht]
   \label{fig:distortion}
   \centering
   \includegraphics[scale=0.3]{graphs/distortion.png}
-  \caption{Camera undistortion}
+  \caption{Camera undistortion and rectification}
 \end{figure}
 \FloatBarrier
 
@@ -67,7 +67,7 @@ The intrinsic matrix describes the projection from 3D world into 2D image plane.
 
 \subsection{Extrinsic calibration}
 
-The extrinsic matrix describes the translation and rotation of camera with respect to the world frame, which means the angle and position of camera taking pictures in 3D world.
+Extrinsic matrix describes the translation and rotation of camera with respect to the world frame. ( i.e., angle and position of camera in 3D world.)
 
 \begin{figure}[ht]
   \label{fig:extrinsic_calibration}
@@ -83,7 +83,7 @@ The extrinsic matrix describes the translation and rotation of camera with respe
 
 \subsection{System conventions}
 
-We define x axis point to the right, y axis point foward and z axis point upward as Xenobot's coordinate system.
+The coordination system of Puyuma self-driving system is defined as follow: x points to right, y points foward and z point upward.
 
 \begin{figure}[ht]
   \label{fig:lane_coordination}
@@ -93,7 +93,7 @@ We define x axis point to the right, y axis point foward and z axis point upward
 \end{figure}
 \FloatBarrier
 
-\noindent Another assumption is that the self-driving car runs between yellow line and white line. The yellow line is at the left side and the white line is at the right side.
+\noindent We also assume the car always drives between yellow and white line. The yellow line is called inner segment and located to the left.  The white line is called outer segment and located to the right.
 
 \begin{figure}[ht]
   \label{fig:lane_2d_view}
@@ -103,7 +103,7 @@ We define x axis point to the right, y axis point foward and z axis point upward
 \end{figure}
 \FloatBarrier
 
-\noindent Now define the pose with respect to the lane, $\bm{d}$ is the lateral displacement and $\bm{\phi}$ is the orientation angle.
+\noindent Now we can define the pose of the car: $\bm{d}$ is the lateral displacement and $\bm{\phi}$ is the orientation angle.
 
 
 \begin{figure}[ht]
@@ -116,7 +116,7 @@ We define x axis point to the right, y axis point foward and z axis point upward
 
 \subsection{Segements detection}
 
-Before the pose estimation, first have to do is detect the lane segments from the image. The lane detector can be achieved by using Canny edge detection, color thresholding method and Hough transform.
+Before doing pose estimation, the lane segments have to be detected from image. Canny edge detection, HSV color thresholding and Hough transform are used.
 
 \begin{figure} [ht]
 \begin{center}
@@ -127,7 +127,7 @@ Before the pose estimation, first have to do is detect the lane segments from th
 \node (diliation_canny) [blocks, xshift=-2cm, yshift=-4.5cm] {Diliation};
 \node (threshold) [blocks, xshift=2cm, yshift=-3cm] {HSV color thresholding};
 \node (diliation_threshold) [blocks, xshift=2cm, yshift=-4.5cm] {Diliation};
-\node (and) [blocks, yshift=-6cm] {Bitwise And};
+\node (and) [blocks, yshift=-6cm] {Bitwise AND operation};
 \node (hough) [blocks, yshift=-7.5cm] {Hough transform};
 \node (segments) [blocks, yshift=-9cm] {Segments};
 
@@ -142,21 +142,21 @@ Before the pose estimation, first have to do is detect the lane segments from th
 \draw [arrow] (hough) -- (segments);
 \end{tikzpicture}
 \end{center}
-\caption{Workflow of lane detector}
+\caption{Lane detector workflow}
 \end{figure}
 \FloatBarrier
 
-\noindent First, transform the image from RGB color space into the HSV color space then use the color thresholding method to find the color like yellow or white in the image.
+\noindent The image is first transfromed from RGB color space into the HSV color space. Color thresholding method is then applied on HSV color space to find the interest color region like yellow or white.
 
 \begin{figure}[ht]
   \label{fig:threshold}
   \centering
   \includegraphics[scale=0.5]{graphs/threshold.jpeg}
-  \caption{Binary color image of color thresholding result}
+  \caption{Binary image of color thresholding result}
 \end{figure}
 \FloatBarrier
 
-\noindent Next, use Canny edge detection to detect the edges in the image. This is a preparation step for Hough transform.
+\noindent After the color thresholding step, Canny edge detection is applied as a preprocessing step of Hoght transform. By using Hough transform, the line position (point-to-point) vector can be obtained for further computation.
 
 \begin{figure}[ht]
   \label{fig:canny}
@@ -166,20 +166,20 @@ Before the pose estimation, first have to do is detect the lane segments from th
 \end{figure}
 \FloatBarrier
 
-\noindent Finally, use the bitwise and operation on color thresholding image and Canny edge image then apply the Hough transform comes out the segments. The following image visualizes the segment locations and also shows the values of $d$ and $\phi$.
+\noindent A bitwise AND operation of color thresholding image and Canny edge image is also used to to distinguish segements from different colors. The following figure shows the visualization result of lane segments and car pose: $d$ and $\phi$.
 
 \begin{figure}[ht]
   \label{fig:hough}
   \centering
   \includegraphics[scale=0.5]{graphs/lane_mark.jpeg}
-  \caption{Segments visualization (The lane detector only works at the botom ROI(Region of Interest) part because there is much possible to be the lane)}
+  \caption{A visualization image of lane pose estimator result}
 \end{figure}
 \FloatBarrier
 
 
 \subsection{Frame transformation}
 
-The camera on the car is mounted in a distance from the origin. In order to know the real lateral displacement of the car, a transformation is need for converting camera frame into car frame.
+The camera is mounted in a certain distance from origin to the car. A camera-to-car frame coordinate transformation is needed for obtaining the right result.
 
 \[
 \begin{pmatrix} x_{car} \\ y_{car} \end{pmatrix} = 
@@ -196,10 +196,9 @@ The camera on the car is mounted in a distance from the origin. In order to know
 
 \subsection{Segment side recognition}
 
-Although the lane detector can find the segments, we still don't know the side of the lane mark that the segments is on.
+Although the lane detector can help for finding segments, a segment side recognizing algorithm is also needed. We can determine the left or right side by testing several pixels in positive and negative direction on the lane segment normal vector direction. (using color thresholding image)
 \\
 \\
-Segment side can be determined by reading multiple pixels in both positive and negative direction of the segment normal vector on color thresholded image. 
 
 \begin{figure}[ht]
   \label{fig:lane_segment}
@@ -258,17 +257,14 @@ Segment side can be determined by reading multiple pixels in both positive and n
 		{
 			\Return unknown side
 		} 
-	\caption{Segment side recognition}
+	\caption{Segment side recognizing algorithm}
 \end{algorithm}
 \end{figure}
 \FloatBarrier
 
 \subsection{Ground projection}
 
-During the calibration stage, we found the homography matrix that map the image from car's view to the road upper view. This is usally called a bird eye view or a inverse perspective mapping image.
-\\
-\\
-\noindent We'll apply this transformation before further steps.
+During the calibration stage, we already found the homography matrix which can help us map the image from camera's perspection to bird view perspection. This is usally called inverse perspective mapping. Inverse perspective mapping is applied before running the lane detector algorithm
 
 \begin{figure}[ht]
   \label{fig:ground projection}
@@ -280,7 +276,7 @@ During the calibration stage, we found the homography matrix that map the image 
 
 \subsection{Pose estimation for single segment}
 
-Each of the segment that lane detector detects can be calculated to be a single pose data due to the lane geometry. We will put these datas into the histogram filter for data filitering later. The process is similar to vote so we call it a vote generating function.
+Each segments detected by lane detector detects can be treated as a single pose data due to the lane geometry. These datas are put into a histogram filter for data filitering later. The process acts like a voting mechanism so is called a vote generating function.
 
 \begin{figure}[ht]
   \label{fig:lane_geometry}
@@ -336,17 +332,17 @@ Each of the segment that lane detector detects can be calculated to be a single 
 	$d_2 = \vec{P_2} \cdot \vec{n}$
 
 	$d_{i} = (d_1 + d_2) / 2$
-	\caption{Generate vote}
+	\caption{Vote generating function}
 \end{algorithm}
 \end{figure}
 \FloatBarrier
 
 \subsection{Histogram filter}
 
-The segment poses generated in previous process will then be voted into the histogram filter. The histogram filter will find out the \textbf{mode} of these datas and eliminate the data out of the mode with certain range.
+Segment poses generated in previous process are then collected into the histogram filter. The histogram filter is designed to find the \textbf{mode} of datas and eliminate extremes.
 \\
 \\
-\noindent After that, calculate the \textbf{mean} of the rest of the datas comes out a much accurate pose information. 
+\noindent After the process, The \textbf{mean} of pose datas is calculated and becomes the estimation result.
 
 \begin{figure}[ht]
   \label{fig:histogram_filter}
@@ -409,11 +405,11 @@ The segment poses generated in previous process will then be voted into the hist
 
 \clearpage
 
-\section{Control system}
+\section{Control system design}
 
 \subsection{Differential wheels}
 
-Xenobot is a differential wheeled robot. There are two independent motors on the car. The car can be turn by changing the speed rate between two motors, hence it does not require any additional steering mechanics.
+Puyuma is designed as a differential wheeled robot. There are two independent motors on the car. The car can turn by changing the speed rate between two motors. Hence it does not require any additional steering mechanism.
 
 \begin{figure}[ht]
   \label{fig:ground projection}
@@ -425,7 +421,7 @@ Xenobot is a differential wheeled robot. There are two independent motors on the
 
 \subsection{PID Controller}
 
-Xenobot use the well known algorithm \textbf{"PID controller"} to fix the orientation and lateral displacement.
+We use the well known algorithm \textbf{"PID controller"} to fix the orientation and lateral displacement error.
 \\
 \\
 The equation of PID controller in continuous time is given as:
@@ -442,10 +438,10 @@ The equation of PID controller in continuous time is given as:
 
 \subsection{Pose control}
 
-The pose controller of Xenobot is a cascaded PID controller.
+The pose controller of Puyuma is designed as a cascaded PID controller.
 \\
 \\
-The phi controller is a low level contoller for lane orientation stablizing, and d controller fix the lateral displacement by changing the setpoint of phi controller to turn left or right.
+We designed phi controller as a lower level contoller for orientation stablizing. d controller can fix the lateral displacement error by changing phi controller's setpoint to turn left or right.
 
 \begin{figure}[ht]
   \label{fig:control_diagram}
@@ -455,7 +451,7 @@ The phi controller is a low level contoller for lane orientation stablizing, and
 \end{figure}
 \FloatBarrier
 
-\noindent The wheel control signal (PWM) is simply the throttle value plus the correction value:
+\noindent The wheel control signal (PWM) are simply the throttle value plus/minus the correction value:
 
 \begin{lstlisting}
 pwm_left = THROTTLE__BASE - pwm_correction
